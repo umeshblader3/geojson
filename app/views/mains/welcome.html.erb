@@ -1,0 +1,9 @@
+<h2>Click map for Location information</h2>
+<div id="res">
+</div>
+<%= form_tag "/", method: :get, remote: true do %>
+  <%= text_field_tag :lattitude %>
+  <%= text_field_tag :longitude %>
+  <%= submit_tag "retrieve location information" %>
+<% end %>
+<div id="map"></div>
