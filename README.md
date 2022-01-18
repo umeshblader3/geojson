@@ -1,24 +1,47 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+this application is about finding location information with the support of Geo map. Based on lattitude and longitude, information are being retrieved through open map api.
 
-Things you may want to cover:
+Technical Specification:
 
-* Ruby version
+* Ruby version: *2.7.0*
 
-* System dependencies
+* System dependencies: Linux distribution is utilized for development environment
 
-* Configuration
+* Configuration: Postgresql acts as database system and heroku is used for deployment purpose.
 
-* Database creation
+* Database creation: `bundle exec rake db:create`
 
-* Database initialization
+* Database initialization: `bundle exec rake db:migrate`
 
-* How to run the test suite
+## Application api end point
+http method: GET method
+Url path: **mains/api/v1/geojson**
 
-* Services (job queues, cache servers, search engines, etc.)
+url query parameters (Example):
+```bash
+{"lattitude": 51.53446389588336, "longitude": -0.13149261474609378}
+```
 
-* Deployment instructions
+response:
+```json
+{
+    "type": "FeatureCollection",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {},
+            "geometry": {
+                "type": "Point",
+                "coordinates": [
+                    "51.53442045979156",
+                    "-0.13152683407430135"
+                ]
+            }
+        }
+    ]
+}
+```
 
-* ...
+## Demo
+Demo is available at https://openmap-sample.herokuapp.com/
